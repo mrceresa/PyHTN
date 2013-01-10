@@ -1,0 +1,6 @@
+(:domain p
+    (:method (test_sort)
+        (:permute (sort_by (:var ?v)) (object ?o) (value ?o ?v))
+        ((!result ?o))
+    )
+)

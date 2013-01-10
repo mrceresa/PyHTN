@@ -1,0 +1,48 @@
+
+(:domain logicops
+    (:module examples)
+
+    (#zero 0)
+    (#one 1)
+    (#two 2)
+
+    (:method (test)
+        ((apple ?a) (not (or (color ?a red) (color ?a green))))
+        ((!result ?a))
+    )
+
+    (:method (test_call)
+        ((apple ?a) (color ?a (call examples.get_green)))
+        ((!result ?a))
+    )
+
+    (:method (test_call_is_single_term)
+        ((call examples.get_true (call examples.get_green)))
+        ((!OK (call examples.get_green)))
+    )
+
+    (:method (test_std_pred)
+        ((call lt #zero (call add #one #two)))
+        ((!OK))
+    )
+
+    (:method (test_foreach)
+        (:foreach
+            ((apple ?a))
+            ((eat_apple_cond ?a))
+        )
+    )
+
+    (:method (eat_apple_cond ?a)
+        ((or (color ?a red) (color ?a green)))
+        ((!eat ?a))
+
+        ()
+        ()
+    )
+
+    (:method (test_negative_unbound)
+        ((not (has_object ?o)))
+        ()
+    )
+)

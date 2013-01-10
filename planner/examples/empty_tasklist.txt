@@ -1,0 +1,6 @@
+(:domain d
+    (:method (test)
+        ()
+        ()
+    )
+)

@@ -1,0 +1,26 @@
+(:domain breakfast
+    (:method (have-breakfast)
+        ()
+        ((choose-drink) (make-meal) (!eat))
+    )
+
+    (:method (choose-drink)
+        branch_coffee
+
+        ((has-coffee ?coffee))
+        ((!make-drink ?coffee))
+
+        branch_tea
+
+        ((has-tea ?tea))
+        ((!make-drink ?tea))
+    )
+
+    (:method (make-meal)
+        ((has-bread ?bread) (has-butter ?butter) (has-ham ?ham))
+        ((!make-sandwich ?bread ?butter ?ham))
+
+        ((has-eggs ?eggs))
+        ((!make-eggs ?eggs))
+    )
+)

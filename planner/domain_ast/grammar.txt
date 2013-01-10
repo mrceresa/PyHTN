@@ -1,0 +1,27 @@
+
+term : 
+    variable | 
+    constant |
+    number   |
+    constant |
+    call
+
+call : ( CALL ID term* )
+
+atom : ( ID term* )
+
+logical_expression : atom | conjunction | disjunction | negation | call
+
+conjunction : ( AND logical_expression* )
+
+disjunction : ( OR logical_expression* )
+
+negation : ( NOT logical_expression )
+
+
+task_list : ( task_atom* )
+
+task_atom : ( ID term* )
+
+
+permute_expression : ( PERMUTE ( ID VAR_ID* ) logical_expression)
