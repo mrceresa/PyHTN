@@ -234,6 +234,18 @@ class TestConversionToDisjunctiveNormalForm(unittest.TestCase):
 
         self.assertEqual(expected, self.tree_to_sexp(actual))
 
+    def test_conversion_5(self):
+        t = '''
+            ((t1) (or (not (t2)) (and (t2) (t3) (t4))))
+            '''
+
+        actual = logical_expression.build(s_expression.parse(t))
+        actual = logical_expression.convert_to_dnf(actual)
+
+        expected = '(or (and t1 (not t2)) (and t1 t2 t3 t4))'
+
+        self.assertEqual(expected, self.tree_to_sexp(actual))
+
     def test_conversion_with_call_term(self):
         t = '''
             ((or (a) (b)) (call func ?x ?y))

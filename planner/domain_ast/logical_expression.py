@@ -238,7 +238,7 @@ def _convert_and_to_dnf(and_node):
 
         new_children.append(new_child)
 
-    return new_children
+    return [flatten(c) for c in new_children]
 
 def _convert_or_to_dnf(or_node):
     while True:
