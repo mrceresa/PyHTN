@@ -73,8 +73,10 @@ def classify_variables(bound_variables, root_node):
     '''
     Classify logical expression variables into free, bound and constants sets.
     *bound_variables* contains parent method variables initially.
+    *root_node* is a logical expression tree in DNF form.
     '''
-    _classify_variables_recursive(list(bound_variables), root_node)
+    for child_node in root_node.children:
+        _classify_variables_recursive(list(bound_variables), child_node)
 
 def _classify_variables_recursive(bound_variables, root_node):
     if isinstance(root_node, node_type.Atom):

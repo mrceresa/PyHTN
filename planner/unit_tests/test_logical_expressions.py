@@ -272,10 +272,11 @@ class TestVariables(unittest.TestCase):
             '''
 
         actual = logical_expression.build(s_expression.parse(t))
+        actual = logical_expression.convert_to_dnf(actual)
 
         bound_variables = ['?method_var']
         logical_expression.classify_variables(bound_variables=bound_variables, root_node=actual)
-        
+
         # bound_variables argument isn't mutable
         self.assertEqual(['?method_var'], bound_variables)
 

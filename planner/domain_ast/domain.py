@@ -111,8 +111,8 @@ def build_branch(name, precondition_expr, tasklist_expr, method_node):
         precondition_expr.children = precondition_expr.children[2:]
 
     precondition_node = logical_expression.build(precondition_expr)
-    logical_expression.classify_variables(method_node.variables, precondition_node)
     precondition_node = logical_expression.convert_to_dnf(precondition_node)
+    logical_expression.classify_variables(method_node.variables, precondition_node)
 
     task_list_nodes = build_task_list(tasklist_expr)
 
